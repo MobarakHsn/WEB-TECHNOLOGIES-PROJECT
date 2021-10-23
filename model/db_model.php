@@ -152,6 +152,57 @@ function admin_showpendingstudents($conn,$status)
     }
 }
 
+function admin_showduefees($conn,$value)
+{
+    $table="students";
+    $result = $conn->query("SELECT * FROM ". $table." WHERE due_fees>='". $value."'");
+    echo "<table border>
+    <tr>
+        <td><h3>ID</h3></td>
+        <td><h3>First Name</h3></td>
+        <td><h3>Last Name</h3></td>
+        <td><h3>Department</h3></td>
+        <td><h3>Program</h3></td>
+        <td><h3>Email</h3></td>
+        <td><h3>Due Fees<h3></td>
+    </tr>";
+    if($result->num_rows>0)
+    {
+        while($row=$result->fetch_assoc())
+        {
+            echo "<tr><td>".$row["id"]."</td><td>".$row["first_name"]."</td><td>".$row["last_name"]."</td>
+            <td>".$row["department"]."</td><td>".$row["program"]."</td><td>".$row["email"]."</td><td>".$row["due_fees"]."</td></tr>";
+        }
+    }
+    echo "</table>";
+}
+
+function admin_showduesalary($conn,$value)
+{
+    $table="teachers";
+    $result = $conn->query("SELECT * FROM ". $table." WHERE due_salary>='". $value."'");
+
+    echo "<table border>
+    <tr>
+        <td><h3>ID</h3></td>
+        <td><h3>First Name</h3></td>
+        <td><h3>Last Name</h3></td>
+        <td><h3>Email</h3></td>
+        <td><h3>Phone</h3></td>
+        <td><h3>Due Salary</h3></td>
+        <td><h3>Designation<h3></td>
+    </tr>";
+    if($result->num_rows>0)
+    {
+        while($row=$result->fetch_assoc())
+        {
+            echo "<tr><td>".$row["id"]."</td><td>".$row["first_name"]."</td><td>".$row["last_name"]."</td>
+            <td>".$row["email"]."</td><td>".$row["phone"]."</td><td>".$row["due_salary"]."</td><td>".$row["designation"]."</td></tr>";
+        }
+    }
+    echo "</table>";
+}
+
 
 function admin_updateUserStatus($conn,$table,$id,$status)
 {
@@ -172,22 +223,6 @@ function admin_updateUserStatus($conn,$table,$id,$status)
 //     $result = $conn->query("SELECT * FROM ". $table." WHERE username='". $username."' AND password='". $password."'");
 //     return $result;
 //  }
-
-
- function UpdateUser($conn,$table,$username,$firstname,$email)
- {
-    $sql = "UPDATE $table SET firstname='$firstname', email='$email' WHERE username='$username'";
-
-    if ($conn->query($sql) === TRUE) 
-    {
-        $result= TRUE;
-    } 
-    else 
-    {
-        $result= FALSE ;
-    }
-    return  $result;
- }
 
 function CloseCon($conn)
 {

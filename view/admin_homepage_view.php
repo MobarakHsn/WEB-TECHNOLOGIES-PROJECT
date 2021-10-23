@@ -126,6 +126,27 @@ else
                             <input type="submit" name="submit_notice" value="Go">
                         </td>
                     </tr>
+                    <tr>
+                        <td><label for="due">View due:</label></td>
+                        <td>
+                            <select name="due">
+                                <option value="none">None-selected</option>
+                                <option value="due_fees">Fees of Students</option>
+                                <option value="due_salary">Salary of Teachers</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?php echo $validatedue;?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" name="submit_due" value="Go">
+                        </td>
+                    </tr>
                 </table>                        
             </form>
             <!-- <br>

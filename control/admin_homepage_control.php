@@ -5,6 +5,7 @@ $validatenotice="";
 $validatepending="";
 $validatecheck="";
 $validatechangeaccess="";
+$validatedue="";
 
 function admin_pendingtable()
 {
@@ -16,6 +17,17 @@ function admin_pendingtable()
 
 if($_SERVER["REQUEST_METHOD"]=="GET")
 {
+    if(isset($_REQUEST["submit_due"]))
+    {
+        if($_REQUEST["due"]==="due_fees")
+        {
+            header("Location:../view/admin_duefees_view.php");
+        }
+        else if($_REQUEST["due"]==="due_salary")
+        {
+            header("Location:../view/admin_duesalary_view.php");
+        }
+    }
     if(isset($_REQUEST["change_access_submit"])  && isset($_REQUEST["change_access_list"]))
     {
         if($_REQUEST["change_access_list"]=="admin")
