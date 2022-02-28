@@ -1,0 +1,6 @@
+{
+    "admin": "This is important for all the admins.",
+    "teacher": "hello teachers",
+    "librarian": "Collect all the books.",
+    "student": null
+}
